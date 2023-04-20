@@ -10,7 +10,7 @@ const barbellListKg: { [key: string]: number } = {
   '4.5': 0,
   '11.3': 0,
   '15': 0,
-  '20': 0,
+  '20.4': 0,
   '25': 0,
 };
 
