@@ -13,11 +13,18 @@ const BarbellList: FC<BarbellListProps> = ({ barbells, onHandleClick }) => {
       {Object.entries(barbells)
         .sort(([a], [b]) => Number(a) - Number(b))
         .map(([key, value]) => (
-          <Flex key={key} w={200} align="center">
-            <Text p={1} flex={1}>
-              {key}:
+          <Flex key={key} w={240} align="center">
+            <Text p={1} w={20}>
+              {key} kg:
             </Text>
-            <Box p={1} flex={2}>
+            <Box
+              p={1}
+              flex={1}
+              border="2px solid teal"
+              mr={2.5}
+              textAlign="center"
+              borderRadius={2}
+            >
               {value}
             </Box>
             <IconButton

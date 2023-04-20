@@ -1,8 +1,8 @@
 import BarbellGender from '@/components/barbell-gender';
 import BarbellList from '@/components/barbell-list';
-import { Center, VStack, Box, Button, HStack } from '@chakra-ui/react';
-import Head from 'next/head'
-import { useCallback, useEffect, useState } from 'react'
+import { Center, VStack, Box, Button, HStack, Text } from '@chakra-ui/react';
+import Head from 'next/head';
+import { useCallback, useEffect, useState } from 'react';
 
 const barbellListKg: { [key: string]: number } = {
   '1.25': 0,
@@ -11,7 +11,7 @@ const barbellListKg: { [key: string]: number } = {
   '11.3': 0,
   '15': 0,
   '20': 0,
-  '25': 0
+  '25': 0,
 };
 
 const barbellGender: { [key: string]: number } = {
@@ -21,6 +21,7 @@ const barbellGender: { [key: string]: number } = {
 
 export default function Home() {
   const [total, setTotal] = useState(0);
+  const [totalLb, setTotalLb] = useState(0);
   const [gender, setGender] = useState('female');
   const [barbells, setBarbells] = useState(barbellListKg);
 
@@ -39,6 +40,7 @@ export default function Home() {
     }, defaultKg);
 
     setTotal(sum);
+    setTotalLb(sum * 2.20462)
   }, [barbells, gender]);
 
   const clearTotal = () => {
@@ -58,30 +60,44 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main>
-      <Center h="100vh">
-      <VStack>
-        <BarbellGender gender={gender} setGender={setGender} />
-        <BarbellList barbells={barbells} onHandleClick={onHandleClick} />
-        <Box h={5} />
-        <Box
-          w={200}
-          justifyContent="center"
-          flex={1}
-          fontSize="xl"
-          border="2px"
-          borderColor="teal"
-          borderRadius={4}
-          p={2}
-        >
-          <Center fontWeight="bold">{total.toFixed(2)}</Center>
-        </Box>
+        <VStack mt={10}>
+          <BarbellGender gender={gender} setGender={setGender} />
+          <Box h={5} />
+          <BarbellList barbells={barbells} onHandleClick={onHandleClick} />
+          <Box h={5} />
+          <Text fontWeight="bold" fontSize={18}>Peso em quilos:</Text>
+          <Box
+            w={200}
+            justifyContent="center"
+            flex={1}
+            fontSize="xl"
+            border="2px"
+            borderColor="teal"
+            borderRadius={4}
+            p={2}
+          >
+            <Center fontWeight="bold">{total.toFixed(2)}</Center>
+          </Box>
+          <Box h={3} />
+          <Text fontWeight="bold" fontSize={18}>Peso em libras:</Text>
+          <Box
+            w={200}
+            justifyContent="center"
+            flex={1}
+            fontSize="xl"
+            border="2px"
+            borderColor="teal"
+            borderRadius={4}
+            p={2}
+          >
+            <Center fontWeight="bold">{totalLb.toFixed(2)}</Center>
+          </Box>
 
-        <HStack>
-          <Button onClick={clearTotal}>Limpar</Button>
-        </HStack>
-      </VStack>
-    </Center>
+          <HStack>
+            <Button mt={5} onClick={clearTotal}>Limpar</Button>
+          </HStack>
+        </VStack>
       </main>
     </>
-  )
+  );
 }

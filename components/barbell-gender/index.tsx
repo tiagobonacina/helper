@@ -1,4 +1,4 @@
-import { RadioGroup, Stack, Radio } from '@chakra-ui/react';
+import { RadioGroup, Stack, Radio, Text } from '@chakra-ui/react';
 
 interface BarbellGenderProps {
   setGender: React.Dispatch<React.SetStateAction<string>>;
@@ -9,8 +9,8 @@ const BarbellGender: React.FC<BarbellGenderProps> = ({ setGender, gender }) => {
   return (
     <RadioGroup onChange={setGender} value={gender}>
       <Stack direction="row">
-        <Radio value="female">Feminina</Radio>
-        <Radio value="male">Masculina</Radio>
+        <Radio value="female">Barra feminina</Radio>
+        <Radio value="male">Barra masculina</Radio>
       </Stack>
     </RadioGroup>
   );
