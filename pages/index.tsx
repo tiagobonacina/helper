@@ -65,12 +65,12 @@ export default function Home() {
       </Head>
       <main>
         <VStack mt={2}>
-          <Image
+          {/* <Image
             src="/capivaras.png"
             alt="capivaras"
             width={150}
             height={150}
-          />
+          /> */}
           <BarbellGender gender={gender} setGender={setGender} />
           <Box h={5} />
           <BarbellList barbells={barbells} onHandleClick={onHandleClick} />
