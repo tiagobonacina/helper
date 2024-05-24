@@ -2,6 +2,7 @@ import BarbellGender from '@/components/barbell-gender';
 import BarbellList from '@/components/barbell-list';
 import { Center, VStack, Box, Button, HStack, Text } from '@chakra-ui/react';
 import Head from 'next/head';
+import Image from 'next/image';
 import { useCallback, useEffect, useState } from 'react';
 
 const barbellListKg: { [key: string]: number } = {
@@ -41,7 +42,7 @@ export default function Home() {
     }, defaultKg);
 
     setTotal(sum);
-    setTotalLb(sum * 2.20462)
+    setTotalLb(sum * 2.20462);
   }, [barbells, gender]);
 
   const clearTotal = () => {
@@ -61,12 +62,20 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main>
-        <VStack mt={10}>
+        <VStack mt={2}>
+          <Image
+            src="/capivaras.png"
+            alt="capivaras"
+            width={150}
+            height={150}
+          />
           <BarbellGender gender={gender} setGender={setGender} />
           <Box h={5} />
           <BarbellList barbells={barbells} onHandleClick={onHandleClick} />
           <Box h={5} />
-          <Text fontWeight="bold" fontSize={18}>Peso em quilos:</Text>
+          <Text fontWeight="bold" fontSize={18}>
+            Peso em quilos:
+          </Text>
           <Box
             w={200}
             justifyContent="center"
@@ -80,7 +89,9 @@ export default function Home() {
             <Center fontWeight="bold">{total.toFixed(2)}</Center>
           </Box>
           <Box h={3} />
-          <Text fontWeight="bold" fontSize={18}>Peso em libras:</Text>
+          <Text fontWeight="bold" fontSize={18}>
+            Peso em libras:
+          </Text>
           <Box
             w={200}
             justifyContent="center"
@@ -95,7 +106,9 @@ export default function Home() {
           </Box>
 
           <HStack>
-            <Button mt={5} onClick={clearTotal}>Limpar</Button>
+            <Button mt={5} onClick={clearTotal}>
+              Limpar
+            </Button>
           </HStack>
         </VStack>
       </main>
