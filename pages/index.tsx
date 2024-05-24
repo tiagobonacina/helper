@@ -21,6 +21,8 @@ const barbellGender: { [key: string]: number } = {
   male: 20,
 };
 
+const POUND = 2.20462;
+
 export default function Home() {
   const [total, setTotal] = useState(0);
   const [totalLb, setTotalLb] = useState(0);
@@ -42,7 +44,7 @@ export default function Home() {
     }, defaultKg);
 
     setTotal(sum);
-    setTotalLb(sum * 2.20462);
+    setTotalLb(sum * POUND);
   }, [barbells, gender]);
 
   const clearTotal = () => {
